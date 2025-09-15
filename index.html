@@ -1,13 +1,13 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hamzah.info</title>
-  </head>
-  <style>
-            * {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -15,20 +15,25 @@
         
         body {
             background-color: #000;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
         }
         
         .stars-container {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
+            z-index: -1;
         }
         
         .star {
@@ -62,56 +67,96 @@
             }
         }
 
-    .a {
-        display: flex;
-        justify-content: center;
-        color: blue;
-        font-size: 24px;
-        right: 20px;
-        position: absolute;
-        left: 50%;
-        top: 20px; 
-        transform: translateX(-50%);
-        margin: 0;
-        text-align: center;
-        white-space: pre;
-    }
+        .header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+        }
 
-    .r1 {
-  border-radius: 15px;
-  background-color: #3498db;
-  color: black;
-  padding: 20px;
-  margin: 10px;
-  width: 300px;
-}
+        .ascii-art {
+            color: #4a86e8;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            white-space: pre;
+            line-height: 1.2;
+            margin: 0 auto;
+            overflow: hidden;
+            max-width: 100%;
+            font-size: 10px;
+            padding: 10px 0;
+        }
 
+        @media (min-width: 480px) {
+            .ascii-art {
+                font-size: 11px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .ascii-art {
+                font-size: 13px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .ascii-art {
+                font-size: 16px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .ascii-art {
+                font-size: 18px;
+            }
+        }
 
         h1 {
             text-align: center;
-            margin-bottom: 20px; /* Reduced margin */
+            margin: 15px 0;
             color: #e94560;
             text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
-            font-size: 2.8rem;
-            margin-top: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
         }
         
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             max-width: 1200px;
             width: 100%;
-            padding: 20px;
-            margin-top: 0; /* Removed previous margin */
+            padding: 10px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 600px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 900px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                padding: 20px;
+            }
         }
         
         .box {
-            height: 200px;
+            height: 180px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -121,8 +166,13 @@
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+        }
+        
+        @media (min-width: 768px) {
+            .box {
+                height: 200px;
+                padding: 25px;
+            }
         }
         
         .box:hover {
@@ -130,15 +180,28 @@
         }
         
         .box-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             font-weight: 600;
             z-index: 2;
         }
         
+        @media (min-width: 768px) {
+            .box-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+        }
+        
         .box-content {
-            font-size: 1rem;
+            font-size: 0.9rem;
             z-index: 2;
+        }
+        
+        @media (min-width: 768px) {
+            .box-content {
+                font-size: 1rem;
+            }
         }
         
         /* RGB Border Animation */
@@ -230,36 +293,58 @@
         
         .footer {
             text-align: center;
-            margin-top: 100px; /* Increased margin to push footer further down */
+            margin-top: 40px;
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            width: 100%;
+            padding: 20px;
         }
         
-        /* Decorative elements for the top space */
-        .top-space {
-            height: 80px; /* Reduced height */
+        @media (min-width: 768px) {
+            .footer {
+                margin-top: 60px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .social-links {
             display: flex;
             justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 10px; /* Reduced margin */
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: #4a86e8;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #e94560;
         }
         
         .decoration {
-            width: 60px; /* Smaller decoration */
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(45deg, #e94560, #0f3460);
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
             animation: pulse 2s infinite alternate;
-            opacity: 0.7; /* More subtle */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .decoration {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
         }
         
         @keyframes pulse {
@@ -272,59 +357,64 @@
                 box-shadow: 0 0 20px rgba(233, 69, 96, 0.6);
             }
         }
-  </style>
+    </style>
+  </head>
   <body>
     <div class="stars-container" id="starsContainer"></div>
 
-        <pre class="a">
-        ooooo   ooooo       .o.       ooo        ooooo  oooooooooooo       .o.       ooooo   ooooo 
-        `888'   `888'      .888.      `88.       .888' d'""""""d888'      .888.      `888'   `888' 
-         888     888      .8"888.      888b     d'888        .888P       .8"888.      888     888  
-         888ooooo888     .8' `888.     8 Y88. .P  888       d888'       .8' `888.     888ooooo888  
-         888     888    .88ooo8888.    8  `888'   888     .888P        .88ooo8888.    888     888  
-         888     888   .8'     `888.   8    Y     888    d888'    .P  .8'     `888.   888     888  
-        o888o   o888o o88o     o8888o o8o        o888o .8888888888P  o88o     o8888o o888o   o888o 
-                                                                                           
-                                                                                           
-                                                                                                                                    
+
+        
+        <pre class="ascii-art">
+   ooooo   ooooo       .o.       ooo        ooooo  oooooooooooo       .o.       ooooo   ooooo 
+   `888'   `888'      .888.      `88.       .888' d'""""""d888'      .888.      `888'   `888' 
+    888     888      .8"888.      888b     d'888        .888P       .8"888.      888     888  
+    888ooooo888     .8' `888.     8 Y88. .P  888       d888'       .8' `888.     888ooooo888  
+    888     888    .88ooo8888.    8  `888'   888     .888P        .88ooo8888.    888     888  
+    888     888   .8'     `888.   8    Y     888    d888'    .P  .8'     `888.   888     888  
+   o888o   o888o o88o     o8888o o8o        o888o .8888888888P  o88o     o8888o o888o   o888o 
         </pre>
+        
     </div>
+    
     <div class="container">
         <div class="box rgb-border">
-            <h2 class="box-title">Hamzah.info</h2>
-            <p class="box-content">Welcome to my personal site</p>
+            <h2 class="box-title"><i class="fas fa-home"></i> Home</h2>
+            <p class="box-content">Welcome to my personal website</p>
         </div>
         
         <div class="box rgb-border">
-            <h2 class="box-title">Contact</h2>
-            <p class="box-content">My email is hamzah.xu@gmail.com</p>
+            <h2 class="box-title"><i class="fas fa-envelope"></i> Contact</h2>
+            <p class="box-content">hamzah.xu@gmail.com</p>
         </div>
         
         <div class="box rgb-border">
-            <h2 class="box-title">Info</h2>
-            <p class="box-content">This website is my bio and its for projects</p>
+            <h2 class="box-title"><i class="fas fa-info-circle"></i> Info</h2>
+            <p class="box-content">This website is my bio and it's for projects</p>
         </div>
         
         <div class="box rgb-border">
-            <h2 class="box-title">My interests</h2>
-            <p class="box-content">History, politics, theology, programming, cybersec</p>
+            <h2 class="box-title"><i class="fas fa-heart"></i> My Interests</h2>
+            <p class="box-content">History, politics, theology, programming, cybersecurity</p>
         </div>
         
         <div class="box rgb-border">
-            <h2 class="box-title">Projects</h2>
+            <h2 class="box-title"><i class="fas fa-code"></i> Projects</h2>
             <p class="box-content">Working on something big for the future</p>
         </div>
         
         <div class="box rgb-border">
-            <h2 class="box-title">Location</h2>
-            <p class="box-content">Im based in Pakistan</p>
+            <h2 class="box-title"><i class="fas fa-map-marker-alt"></i> Location</h2>
+            <p class="box-content">Based in Pakistan</p>
         </div>
     </div>
-  </body>
-<script>
+    
+
+    </div>
+    
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('starsContainer');
-            const starsCount = 200; 
+            const starsCount = Math.min(200, window.innerWidth * window.innerHeight / 2000); 
             
             for (let i = 0; i < starsCount; i++) {
                 createStar();
@@ -351,6 +441,21 @@
                 
                 container.appendChild(star);
             }
+            
+            // Adjust star density on resize
+            window.addEventListener('resize', function() {
+                // Clear existing stars
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+                
+                // Create new stars based on new window size
+                const newStarsCount = Math.min(200, window.innerWidth * window.innerHeight / 2000);
+                for (let i = 0; i < newStarsCount; i++) {
+                    createStar();
+                }
+            });
         });
-</script>
+    </script>
+  </body>
 </html>
